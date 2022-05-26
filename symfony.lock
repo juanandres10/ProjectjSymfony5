@@ -164,6 +164,9 @@
             ".env"
         ]
     },
+    "symfony/form": {
+        "version": "v5.4.8"
+    },
     "symfony/framework-bundle": {
         "version": "5.4",
         "recipe": {
@@ -198,10 +201,16 @@
             "ref": "fadbfe33303a76e25cb63401050439aa9b1a9c7f"
         }
     },
+    "symfony/options-resolver": {
+        "version": "v5.4.3"
+    },
     "symfony/password-hasher": {
         "version": "v5.4.8"
     },
     "symfony/polyfill-intl-grapheme": {
+        "version": "v1.25.0"
+    },
+    "symfony/polyfill-intl-icu": {
         "version": "v1.25.0"
     },
     "symfony/polyfill-intl-normalizer": {
@@ -277,6 +286,37 @@
     "symfony/string": {
         "version": "v5.4.8"
     },
+    "symfony/translation-contracts": {
+        "version": "v2.5.1"
+    },
+    "symfony/twig-bridge": {
+        "version": "v5.4.8"
+    },
+    "symfony/twig-bundle": {
+        "version": "5.4",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "5.4",
+            "ref": "bb2178c57eee79e6be0b297aa96fc0c0def81387"
+        },
+        "files": [
+            "config/packages/twig.yaml",
+            "templates/base.html.twig"
+        ]
+    },
+    "symfony/validator": {
+        "version": "5.4",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "5.3",
+            "ref": "c32cfd98f714894c4f128bb99aa2530c1227603c"
+        },
+        "files": [
+            "config/packages/validator.yaml"
+        ]
+    },
     "symfony/var-dumper": {
         "version": "v5.4.8"
     },
@@ -285,5 +325,11 @@
     },
     "symfony/yaml": {
         "version": "v5.4.3"
+    },
+    "twig/extra-bundle": {
+        "version": "v3.4.0"
+    },
+    "twig/twig": {
+        "version": "v3.4.1"
     }
 }
