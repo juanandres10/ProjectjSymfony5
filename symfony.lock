@@ -80,6 +80,12 @@
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.12"
     },
+    "knplabs/knp-components": {
+        "version": "v2.5.1"
+    },
+    "knplabs/knp-paginator-bundle": {
+        "version": "v5.3.0"
+    },
     "laminas/laminas-code": {
         "version": "3.4.1"
     },
@@ -201,6 +207,9 @@
             "ref": "fadbfe33303a76e25cb63401050439aa9b1a9c7f"
         }
     },
+    "symfony/mime": {
+        "version": "v5.4.9"
+    },
     "symfony/options-resolver": {
         "version": "v5.4.3"
     },
@@ -211,6 +220,9 @@
         "version": "v1.25.0"
     },
     "symfony/polyfill-intl-icu": {
+        "version": "v1.25.0"
+    },
+    "symfony/polyfill-intl-idn": {
         "version": "v1.25.0"
     },
     "symfony/polyfill-intl-normalizer": {
@@ -227,6 +239,9 @@
     },
     "symfony/polyfill-php81": {
         "version": "v1.25.0"
+    },
+    "symfony/process": {
+        "version": "v5.4.8"
     },
     "symfony/property-access": {
         "version": "v5.4.8"
@@ -285,6 +300,19 @@
     },
     "symfony/string": {
         "version": "v5.4.8"
+    },
+    "symfony/translation": {
+        "version": "5.4",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "5.3",
+            "ref": "da64f5a2b6d96f5dc24914517c0350a5f91dee43"
+        },
+        "files": [
+            "config/packages/translation.yaml",
+            "translations/.gitignore"
+        ]
     },
     "symfony/translation-contracts": {
         "version": "v2.5.1"
