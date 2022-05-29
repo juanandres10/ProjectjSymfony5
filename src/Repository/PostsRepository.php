@@ -21,6 +21,10 @@ class PostsRepository extends ServiceEntityRepository
         parent::__construct($registry, Posts::class);
     }
 
+    public function BuscarPosts(){
+	return $this->getEntityManager()->createQuery('SELECT post.id, post.titulo, post.foto, post.fecha_publicacion FROM App:Posts post');
+    }
+
     public function add(Posts $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
