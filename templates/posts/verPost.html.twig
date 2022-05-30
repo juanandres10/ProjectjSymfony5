@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Posts{% endblock %}
+
+{% block body %}
+    <h1>Posts</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ post.id }}</td>
+            </tr>
+            <tr>
+                <th>Titulo</th>
+                <td>{{ post.titulo }}</td>
+            </tr>
+            <tr>
+                <th>Likes</th>
+                <td>{{ post.likes }}</td>
+            </tr>
+            <tr>
+                <th>Foto</th>
+                <td>{{ post.foto }}</td>
+            </tr>
+            <tr>
+                <th>Fecha_publicacion</th>
+                <td>{{ post.fechaPublicacion ? post.fechaPublicacion|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Contenido</th>
+                <td>{{ post.contenido }}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}
+

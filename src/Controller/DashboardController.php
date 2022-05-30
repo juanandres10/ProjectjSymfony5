@@ -24,7 +24,7 @@ class DashboardController extends AbstractController
         	2 /*Limite de posts por pagina, si hay mas pagina nueva*/
    	);
         return $this->render('dashboard/index.html.twig', [
-            'pagination' => $pagination
+            'pagination' => $pagination,
         ]);
     }
 }
