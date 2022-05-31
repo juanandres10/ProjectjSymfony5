@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Posts;
 use App\Form\PostsType;
+use App\Repository\PostsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -53,4 +54,28 @@ class PostsController extends AbstractController
 	    'formulario'=>$form->createView()
         ]);
     }
+
+    /**
+     * @Route("/posts/{id}", name="VerPost", methods={"GET"})
+     */
+    public function VerPost($id): Response{
+    $em = $this->getDoctrine()->getManager();
+    $post = $em->getRepository(Posts::class)->find($id);
+        return $this->render('posts/verPost.html.twig', [
+            'post' => $post,
+        ]);
+    }
+
+    /**
+     * @Route("/mis-posts", name="MisPosts", methods={"GET"})
+     */
+    public function MisPosts(): Response{
+    $em = $this->getDoctrine()->getManager();
+    $user = $this->getUser();
+    $posts = $em->getRepository(Posts::class)->findBy(['user'=>$user]);
+        return $this->render('posts/misPosts.html.twig', [
+            'posts' => $posts,
+        ]);
+    }
 }
+

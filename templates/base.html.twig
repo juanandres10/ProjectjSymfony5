@@ -2,18 +2,44 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        <title>{% block title %}¡JuanFony!{% endblock %}</title>
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
-
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
+		{{ encore_entry_link_tags('app') }}
+		<link rel="shortcut icon" href="{{ asset('img/favicon.ico') }}" type="image/bmp" />
+		<link rel="stylesheet" href="{{ asset('bootstrap/bootstrap.min.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {% block body %}
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<a class="navbar-brand" href="#">JUANFONY</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active">
+					<a class="nav-link" href="{{ path('RegistrarPosts') }}">Crear Post</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('MisPosts') }}">Mis Posts</a>
+				</li>
+			</ul>
+			<form class="form-inline my-2 my-lg-0">
+				<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+			</form>
+		</div>
+	</nav>
+	{% endblock %}
+	{% block javascripts %}
+		{{ encore_entry_script_tags('app') }}
+		<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+		<script src="{{ asset('js/jquery-3.4.1.min.js') }}"></script>
+		<script src="{{ asset('js/popper.min.js') }}"></script>
+        {% endblock %}
     </body>
 </html>

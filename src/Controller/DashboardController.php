@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class DashboardController extends AbstractController
 {
     /**
-     * @Route("/dashboard", name="app_dashboard")
+     * @Route("/", name="app_dashboard")
      */
     public function index(PaginatorInterface $paginator, Request $request): Response
     {
@@ -24,7 +24,7 @@ class DashboardController extends AbstractController
         	2 /*Limite de posts por pagina, si hay mas pagina nueva*/
    	);
         return $this->render('dashboard/index.html.twig', [
-            'pagination' => $pagination
+            'pagination' => $pagination,
         ]);
     }
 }
