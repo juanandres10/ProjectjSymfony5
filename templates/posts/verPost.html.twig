@@ -1,37 +1,30 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Posts{% endblock %}
+{% block title %}{{ parent() }} - Post {{ post.id }}{% endblock %}
 
 {% block body %}
-    <h1>Posts</h1>
-
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ post.id }}</td>
-            </tr>
-            <tr>
-                <th>Titulo</th>
-                <td>{{ post.titulo }}</td>
-            </tr>
-            <tr>
-                <th>Likes</th>
-                <td>{{ post.likes }}</td>
-            </tr>
-            <tr>
-                <th>Foto</th>
-                <td>{{ post.foto }}</td>
-            </tr>
-            <tr>
-                <th>Fecha_publicacion</th>
-                <td>{{ post.fechaPublicacion ? post.fechaPublicacion|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Contenido</th>
-                <td>{{ post.contenido }}</td>
-            </tr>
-        </tbody>
-    </table>
+	{{ parent() }}
+	<div class="container bg-amcl rounded my-3 p-4">
+		<div class="d-flex bd-highlight">
+			<div class="p-2 flex-grow-1 bd-highlight">
+				<h3>{{post.titulo}}</h3>
+				<div class="my-3" style="color:#3282b8;">
+					<i class="fa fa-thumbs-up"></i><strong> # Likes</strong>
+				</div>
+				<div style="color:#4FBE1F;">
+					<i class="far fa-clock"></i> <strong>Fecha de publicación: {{ post.fechapublicacion | date('d-m-Y H-i') }}</strong>
+				</div>
+			</div>
+			<div class="p-2 bd-highlight">
+				<div class="align-self-center">
+					<img class="rounded" src="{{ asset('uploads/fotos/'~post.foto) }}" width="150px">
+				</div>
+			</div>
+		</div>
+		<hr>
+		<div class="text-justify my-3">
+			{{post.contenido}}
+		</div>
+	</div>
 {% endblock %}
 
