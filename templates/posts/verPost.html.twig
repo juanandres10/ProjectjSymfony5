@@ -1,8 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Posts{% endblock %}
+{% block title %}{{ parent() }} - Post {{ post.id }}{% endblock %}
 
 {% block body %}
+	{{ parent() }}
     <h1>Posts</h1>
 
     <table class="table">
