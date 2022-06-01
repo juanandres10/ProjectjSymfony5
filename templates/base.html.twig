@@ -9,37 +9,85 @@
 		<link rel="shortcut icon" href="{{ asset('img/favicon.ico') }}" type="image/bmp" />
 		<link rel="stylesheet" href="{{ asset('bootstrap/bootstrap.min.css') }}">
 		<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+		<link rel="stylesheet" href="{{ asset('fontawesome/css/all.css') }}">
         {% endblock %}
     </head>
     <body>
         {% block body %}
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			<a class="navbar-brand" href="#">JUANFONY</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
+	<div class="container-fluid">
+		<div class="mr-1 bg-degradado_red_blue ml-1 mt-1">
+			<nav class="navbar navbar-expand-sm navbar-dark primary-color">
+				<a class="navbar-brand tejano" href="{{ path('app_dashboard') }}">JUANFONY</a>
+				<button class="navbar-toggler mr-3" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
 
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active">
-					<a class="nav-link" href="{{ path('RegistrarPosts') }}">Crear Post</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="{{ path('MisPosts') }}">Mis Posts</a>
-				</li>
-			</ul>
-			<form class="form-inline my-2 my-lg-0">
-				<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-			</form>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="nav navbar-nav mr-auto" id="myTab" role="tablist">
+						<li class="nav-item">
+							<a class="nav-link signi" href="{{ path('RegistrarPosts') }}">Crear Post</a>
+						</li>
+						<li class="nav-item">
+						        <a class="nav-link signi" href="{{ path('MisPosts') }}">Mis Posts</a>
+						</li>
+					</ul>
+					<form class="form-inline my-2 my-lg-0">
+						<input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Buscar">
+						<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+					</form>
+				</div>
+			</nav>
 		</div>
-	</nav>
+	{% endblock %}
+	{% block footer %}
+		<div class="row mb-1">
+		    	<div class="col-12">
+		    		<!-- Footer -->
+					<footer class="page-footer font-small bg-color-dark pt-4">
+					    <!-- Social buttons -->
+					    <ul class="list-unstyled list-inline text-center">
+					      <li class="list-inline-item">
+					        <a class="btn-circle btn-xl btn-sy text-white" href="https://symfony.es/" target="_blank">
+					          <i class="fab fa-symfony"></i>
+					        </a>
+					      </li>
+					      <li class="list-inline-item">
+					        <a class="btn-circle btn-xl btn-fb text-white" href="https://es-es.facebook.com/symfony.es/" target="_blank">
+					          <i class="fab fa-facebook-f"> </i>
+					        </a>
+					      </li>
+					      <li class="list-inline-item">
+					        <a class="btn-circle btn-xl btn-tw text-white" href="https://twitter.com/symfony" target="_blank">
+					          <i class="fab fa-twitter"> </i>
+					        </a>
+					      </li>
+					      <li class="list-inline-item">
+					        <a class="btn-circle btn-xl btn-yt text-white" href="https://www.youtube.com/c/dfbastidas" target="_blank">
+					          <i class="fab fa-youtube"></i>
+					        </a>
+					      </li>
+					      <li class="list-inline-item">
+					        <a class="btn-circle btn-xl btn-ig mx-1 text-white" href="https://www.instagram.com/symfonyy/" target="_blank">
+					          <i class="fab fa-instagram"></i>
+					        </a>
+					      </li>
+					    </ul>
+					    <!-- Social buttons -->
+					  <!-- Copyright -->
+					  <div class="footer-copyright text-center py-3">© 2022 Copyright: Juan Andres Ruiz Hernández
+					  </div>
+					  <!-- Copyright -->
+					</footer>
+					<!-- Footer -->
+				</div>
+		    </div>
+		</div>
 	{% endblock %}
 	{% block javascripts %}
 		{{ encore_entry_script_tags('app') }}
-		<script src="{{ asset('js/bootstrap.min.js') }}"></script>
 		<script src="{{ asset('js/jquery-3.4.1.min.js') }}"></script>
 		<script src="{{ asset('js/popper.min.js') }}"></script>
+		<script src="{{ asset('js/bootstrap.min.js') }}"></script>
         {% endblock %}
     </body>
 </html>
