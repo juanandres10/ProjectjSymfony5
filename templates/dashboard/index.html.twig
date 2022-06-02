@@ -4,33 +4,43 @@
 
 {% block body %}
 	{{ parent() }}
-	<div class="count">
-	    {{ pagination.getTotalItemCount }}
+	<div class="row">
+		{% for article in pagination %}
+		<div class="col-md-6 cursor">
+			<div class="bg-amcl rounded p-3 my-3"  onclick="window.location.href='{{ path('VerPost',{id:article.id}) }}'">
+				<div class="d-flex bd-highlight">
+					<div class="p-2 flex-grow-1 bd-highlight">
+						<h3>{{ article.titulo }}</h3>
+						<div class="my-3 bg-yellow">
+							<i class="fa fa-user"></i><strong> Creado por {{ article.nombre }}</strong>
+						</div>
+						<div class=" bg-green">
+							<i class="far fa-clock"></i> <strong>Fecha de publicación: {{ article.fecha_publicacion | date('d-m-Y H-i') }}</strong>
+						</div>
+					</div>
+					<div class="p-2 bd-highlight">
+						<div class="align-self-center">
+							<img class="rounded" src="{{ asset('uploads/fotos/'~article.foto) }}" width="150px" height="200px">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+		<div class="col-md-4">
+			<div class="bg-white rounded p-3 my-3">
+				<h4>Comentarios</h4>
+				{% for comentario in comentarios %}
+					<div class="bg-white my-2">
+						<a href="{{ path('VerPost',{id:comentario.id}) }}">{{ comentario.titulo }}</a>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
 	</div>
-	<table>
-	    <tr>
-	        {# sorting of properties based on query components #}
-	        <th>{{ knp_pagination_sortable(pagination, 'Id', 'a.id') }}</th>
-	        <th{% if pagination.isSorted('a.Title') %} class="sorted"{% endif %}>
-	            {{ knp_pagination_sortable(pagination, 'Title', 'a.title') }}
-	        </th>
-	        <th{% if pagination.isSorted(['a.date', 'a.time']) %} class="sorted"{% endif %}>
-	            {{ knp_pagination_sortable(pagination, 'Release', ['a.date', 'a.time']) }}
-	        </th>
-	    </tr>
-
-	    {# table body #}
-	    {% for article in pagination %}
-	        <tr {% if loop.index is odd %}class="color"{% endif %}>
-	            <td>{{ article.id }}</td>
-	            <td>{{ article.titulo }}</td>
-	            <td>{{ article.foto }}</td>
-	            <td>{{ article.fecha_publicacion | date('d-m-Y') }}</td>
-	        </tr>
-	    {% endfor %}
-	</table>
-	{# display navigation #}
-	<div class="navigation">
-	    {{ knp_pagination_render(pagination) }}
+	<div class="d-flex justify-content-center">
+		<div class="navigation">
+			{{ knp_pagination_render(pagination) }}
+		</div>
 	</div>
 {% endblock %}
