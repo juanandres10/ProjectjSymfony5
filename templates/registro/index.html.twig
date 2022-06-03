@@ -3,11 +3,20 @@
 {% block title %}{{ parent() }} - Registrar Usuario{% endblock %}
 
 {% block body %}
-	{{ parent() }}
 	{% for message in app.flashes('exito') %}
             <div class="alert alert-success">
                 {{ message }}
             </div>
         {% endfor %}
-	{{ form(formulario) }}
+	<div class="container">
+		<div class="row m-0 vh-100 justify-content-center align-items-center">
+			<div class="col-6 bg-degradado_red_blue p-5 text-white" style="border-radius:25px">
+				<h1 class="h3 mb-3 font-weight-normal text-center">Registrate</h1>
+				{{ form(formulario) }}
+				<a class="btn btn-primary" href="{{ path('app_login') }}" role="button">Ya tengo cuenta, quiero loguearme :)</a>
+			</div>
+		</div>
+	</div>
+
 {% endblock %}
+{% block footer %}{% endblock %}
