@@ -1,0 +1,11 @@
+{# templates/bundles/TwigBundle/Exception/error404.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{parent()}}
+    <h1>Pagina no encontrada</h1>
+
+    <p>
+        Por favor asegurase de que la pagina que desea visitar existe.
+    </p>
+{% endblock %}
