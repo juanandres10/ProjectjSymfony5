@@ -24,7 +24,7 @@ class ComentariosRepository extends ServiceEntityRepository
     public function BuscarComentarios($id_user){
         return $this->getEntityManager()
             ->createQuery('
-                SELECT comentario.id, post.titulo, post.id
+                SELECT comentario.id, post.titulo, post.id, comentario.fecha_publicacion
                 FROM App:Comentarios comentario
                 JOIN comentario.posts post
                 WHERE comentario.user =:user_id
@@ -37,7 +37,7 @@ class ComentariosRepository extends ServiceEntityRepository
     public function BuscarComentariosDeUNPost($post_id){
         return $this->getEntityManager()
             ->createQuery('
-                SELECT comentario.comentario, user.nombre
+                SELECT comentario.comentario, user.nombre, comentario.fecha_publicacion
                 FROM App:Comentarios comentario
                 JOIN comentario.user user
                 WHERE comentario.posts =:post_id

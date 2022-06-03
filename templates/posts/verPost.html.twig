@@ -32,7 +32,10 @@
 		<h3>Comentarios</h3>
 		{% for comentario in comentarios %}
 			<div class="rounded bg-white my-2 p-3 border">
-				<h5>{{ comentario.nombre }} Dijo:</h5>
+				<div class="d-flex justify-content-between">
+					<div class=""><h5>{{ comentario.nombre }} Dijo:</h5></div>
+					<div class=""><h5>{{ comentario.fecha_publicacion | date('d-m-Y H-i') }}</h5></div>
+				</div>
 				<div class="w-100">{{ comentario.comentario }}</div>
 			</div>
 		{% endfor %}
