@@ -10,6 +10,7 @@
         "doctrine/doctrine-bundle": "^2.6",
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^2.12",
+        "friendsofsymfony/jsrouting-bundle": "^2.8",
         "knplabs/knp-paginator-bundle": "^5.3",
         "sensio/framework-extra-bundle": "^6.2",
         "symfony/asset": "5.4.*",
