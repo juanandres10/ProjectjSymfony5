@@ -100,5 +100,24 @@ class PostsController extends AbstractController
             'posts' => $posts,
         ]);
     }
+
+    /**
+     * @Route("/Likes", options={"expose"=true}, name="Likes")
+     */
+    public function Like(Request $request){
+        if($request->isXmlHttpRequest()){ /* Se ejecuta si la solicitud la recibe por ajax */
+            $em = $this->getDoctrine()->getManager();
+            $user = $this->getUser();
+            $id = $request->request->get('id'); /* Obtenemos el id del posts de la funcion MeGusta */
+            $post = $em->getRepository(Posts::class)->find($id);
+            $likes = $post->getLikes(); /* Mostramos todos los likes del posts */
+            $likes .= $user->getId().','; /* Concatenamos los likes con el id del usuario separado por una coma */
+            $post->setLikes($likes); /* Actualizamos los likes */
+            $em->flush();
+            return new JsonResponse(['likes'=>$likes]);
+        }else{
+            throw new \Exception('¿Estás tratando de hackearme?');
+        }
+    }
 }
 
