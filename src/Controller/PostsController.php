@@ -102,6 +102,64 @@ class PostsController extends AbstractController
     }
 
     /**
+     * @Route("/editar-post/{id}", name="app_posts_edit", methods={"GET", "POST"})
+     */
+    public function edit(Request $request, Posts $post, PostsRepository $postsRepository, SluggerInterface $slugger): Response
+    {
+        $form = $this->createForm(PostsType::class, $post);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $postsRepository->add($post, true);
+
+				$brochureFile = $form->get('foto')->getData();
+		if ($brochureFile) {
+               		$originalFilename = pathinfo($brochureFile->getClientOriginalName(), PATHINFO_FILENAME);
+                	// Obtiene el nombre de la url y hace unos cambios para que sea unico.
+                	$safeFilename = $slugger->slug($originalFilename);
+                	$newFilename = $safeFilename.'-'.uniqid().'.'.$brochureFile->guessExtension();
+
+               		// Mueve la foto al directorio que le digamos para guardarla
+                	try {
+                    		$brochureFile->move(
+                        		$this->getParameter('brochures_directory'),
+                        		$newFilename
+                    		);
+                	} catch (FileException $e) {
+                    		throw new \Exception ('Ha ocurrido un error, intentalo de nuevo');
+                	}
+
+                	// Actualiza el nombre de la foto para que en caso de que haya dos imagenes con el mismo nombre no den error; ya que al cambiarle un nombre le pone uno por defecto.
+                	$post->setFoto($newFilename);
+            	}
+		$user = $this->getUser();
+		$post->setUser($user);
+		$em = $this->getDoctrine()->getManager();
+		$em->persist($post);
+		$em->flush();
+
+            return $this->redirectToRoute('app_dashboard', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->renderForm('posts/edit.html.twig', [
+            'post' => $post,
+            'form' => $form,
+        ]);
+    }
+
+    /**
+     * @Route("/eliminar-post-{id}", name="app_posts_delete", methods={"POST"})
+     */
+    public function delete(Request $request, Posts $post, PostsRepository $postsRepository): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$post->getId(), $request->request->get('_token'))) {
+            $postsRepository->remove($post, true);
+        }
+
+        return $this->redirectToRoute('app_dashboard', [], Response::HTTP_SEE_OTHER);
+    }
+
+    /**
      * @Route("/Likes", options={"expose"=true}, name="Likes")
      */
     public function Like(Request $request){

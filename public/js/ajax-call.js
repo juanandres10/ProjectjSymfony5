@@ -8,7 +8,7 @@ function MeGusta(id){
         async: true,
         dataType: "json",
         success: function (data) {
-            window.location.reload();
+		window.location.reload();
         }
     });
 }
