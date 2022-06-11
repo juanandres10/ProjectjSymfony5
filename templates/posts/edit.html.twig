@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} - Editar Post{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    <h1 class="text-center">Editar Post</h1>
+    {{ include('posts/_form.html.twig', {button_text: 'Update!'}) }}
+{% endblock %}
