@@ -58,11 +58,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $posts;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Profesion::class, mappedBy="user")
-     */
-    private $profesion;
-
     public function __construct(){
 	$this->baneado = false;
 	$this->roles = ['ROLE_USER'];
